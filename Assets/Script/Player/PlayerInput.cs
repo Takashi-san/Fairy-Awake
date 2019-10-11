@@ -6,7 +6,9 @@ public class PlayerInput : MonoBehaviour {
 	float _horizontal, _vertical;
 	bool _horizontalDown, _verticalDown;
 
+	// Em Edit >> Project Settings... >> Script Execution Order, foi colocado para ser executado antes de todos.
 	void Update() {
+		// Tempo que leva para atingir valor máximo pode ser ajustado em Edit >> Project Settings... >> Input.
 		// A (-1) <-> D (1).
 		_horizontal = Input.GetAxis("Horizontal");
 		// S (-1) <-> W (1).
@@ -26,6 +28,7 @@ public class PlayerInput : MonoBehaviour {
 
 	public bool IsHorizontalDown() {
 		if (_horizontalDown) {
+			_verticalDown = false;
 			_horizontalDown = false;
 			return true;
 		}
@@ -39,6 +42,7 @@ public class PlayerInput : MonoBehaviour {
 	public bool IsVerticalDown() {
 		if (_verticalDown) {
 			_verticalDown = false;
+			_horizontalDown = false;
 			return true;
 		}
 		return false;
