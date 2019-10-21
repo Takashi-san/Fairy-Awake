@@ -22,44 +22,56 @@ public class PlayerOrientation : MonoBehaviour {
 		}
 	}
 
-	void Update() {
-		if (_pi.IsHorizontalDown()) {
-			if (_pi.GetHorizontal() > 0) {
-				_newOrientation = Vector3.up * 90;
-				_oldOrientation = transform.rotation.eulerAngles;
-			}
-			else {
-				if (transform.rotation.eulerAngles.y < 90) {
-					_oldOrientation = Vector3.up * (transform.rotation.eulerAngles.y + 360);
-				}
-				else {
-					_oldOrientation = transform.rotation.eulerAngles;
-				}
-				_newOrientation = Vector3.up * 270;
-			}
-
-			_deltaTime = 0;
-		}
-		else if (_pi.IsVerticalDown()) {
-			if (_pi.GetVertical() > 0) {
-				if (transform.rotation.eulerAngles.y > 180) {
-					_newOrientation = Vector3.up * 360;
-				}
-				else {
-					_newOrientation = Vector3.zero;
-				}
-				_oldOrientation = transform.rotation.eulerAngles;
-			}
-			else {
-				_newOrientation = Vector3.up * 180;
-				_oldOrientation = transform.rotation.eulerAngles;
-			}
-
-			_deltaTime = 0;
-		}
-	}
-
 	void FixedUpdate() {
+		if (_pi.GetHorizontal() != 0) {
+			if (_pi.GetHorizontal() > 0) {
+				if (_newOrientation.y != 90) {
+					_newOrientation = Vector3.up * 90;
+					_oldOrientation = transform.rotation.eulerAngles;
+
+					_deltaTime = 0;
+				}
+			}
+			else {
+				if (_newOrientation.y != 270) {
+					if (transform.rotation.eulerAngles.y < 90) {
+						_oldOrientation = Vector3.up * (transform.rotation.eulerAngles.y + 360);
+					}
+					else {
+						_oldOrientation = transform.rotation.eulerAngles;
+					}
+					_newOrientation = Vector3.up * 270;
+
+					_deltaTime = 0;
+				}
+			}
+		}
+		else if (_pi.GetVertical() != 0) {
+			if (_pi.GetVertical() > 0) {
+				if ((_newOrientation.y != 360) && (_newOrientation.y != 0)) {
+					if (transform.rotation.eulerAngles.y > 180) {
+						_newOrientation = Vector3.up * 360;
+					}
+					else {
+						_newOrientation = Vector3.zero;
+					}
+					_oldOrientation = transform.rotation.eulerAngles;
+
+					_deltaTime = 0;
+				}
+			}
+			else {
+				if (_newOrientation.y != 180) {
+					_newOrientation = Vector3.up * 180;
+					_oldOrientation = transform.rotation.eulerAngles;
+
+					_deltaTime = 0;
+				}
+			}
+		}
+
+
+		// Do the lerping.
 		if (_deltaTime < _timeRotationLerp) {
 			_deltaTime += Time.fixedDeltaTime;
 			_orientation = Vector3.Lerp(_oldOrientation, _newOrientation, _deltaTime / _timeRotationLerp);
