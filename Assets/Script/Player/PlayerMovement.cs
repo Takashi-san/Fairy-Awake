@@ -21,14 +21,23 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (_pi.GetHorizontal() != 0) {
-			_rb.velocity = Vector3.right * _pi.GetHorizontal() * _velocity;
-		}
-		else if (_pi.GetVertical() != 0) {
-			_rb.velocity = Vector3.forward * _pi.GetVertical() * _velocity;
+
+
+		if (_pi.GetJump()) {
+			_rb.velocity = Vector3.up * _velocity;
 		}
 		else {
-			_rb.velocity = Vector3.zero;
+			_rb.velocity = Vector3.up * _rb.velocity.y;
+		}
+
+		if (_pi.GetHorizontal() != 0) {
+			_rb.velocity += Vector3.right * _pi.GetHorizontal() * _velocity;
+		}
+		else if (_pi.GetVertical() != 0) {
+			_rb.velocity += Vector3.forward * _pi.GetVertical() * _velocity;
+		}
+		else {
+			_rb.velocity += Vector3.zero;
 		}
 	}
 }
