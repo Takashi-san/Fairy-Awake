@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
 	float _horizontal, _vertical;
 	bool _horizontalDown, _verticalDown;
-	bool _use, _tmp;
+	bool _use, _tmp, _jump;
 
 	// Em Edit >> Project Settings... >> Script Execution Order, foi colocado para ser executado antes de todos.
 	void Update() {
@@ -16,6 +16,7 @@ public class PlayerInput : MonoBehaviour {
 		_vertical = Input.GetAxis("Vertical");
 
 		_use = Input.GetButtonDown("Jump");
+		_jump = Input.GetButtonDown("Jump");
 		_tmp = Input.GetButtonDown("Fire1");
 	}
 
@@ -29,6 +30,10 @@ public class PlayerInput : MonoBehaviour {
 
 	public bool GetUse() {
 		return _use;
+	}
+
+	public bool GetJump() {
+		return _jump;
 	}
 
 	public bool GetTmp() {
