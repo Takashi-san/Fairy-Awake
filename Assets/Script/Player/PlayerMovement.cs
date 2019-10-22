@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
 	Rigidbody _rb;
 
 	[SerializeField] float _velocity = 0;
+	[SerializeField] float _jumpVelocity = 0;
 
 	void Start() {
 		_pi = gameObject.GetComponent<PlayerInput>();
@@ -21,10 +22,8 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-
-
 		if (_pi.GetJump()) {
-			_rb.velocity = Vector3.up * _velocity;
+			_rb.velocity = Vector3.up * _jumpVelocity;
 		}
 		else {
 			_rb.velocity = Vector3.up * _rb.velocity.y;
