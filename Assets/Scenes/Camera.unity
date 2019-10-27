@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7335166856718729534, guid: 8f9a8b3cfb00b524f89b2340ad63b32e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7335166856718729666, guid: 8f9a8b3cfb00b524f89b2340ad63b32e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -220,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07aac6c3ca69554bb9f77e1583833c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxSqrOffset: 0
 --- !u!81 &470053682
 AudioListener:
   m_ObjectHideFlags: 0
@@ -506,6 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07aac6c3ca69554bb9f77e1583833c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxSqrOffset: 0
 --- !u!114 &876661099
 MonoBehaviour:
   m_ObjectHideFlags: 0
