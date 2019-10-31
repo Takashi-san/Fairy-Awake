@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class PlayerGrabSystem : MonoBehaviour
 {   
-    PlayerInput _pi;
+    bool grabEvent;
 
     // Start is called before the first frame update
     void Start()
     {
-        _pi = GetComponent<PlayerInput>();
-        if (!_pi) 
-        {
-            Debug.LogError("No PlayerInput in the object!");
-        }
     }
 
     // Update is called once per frame
     void Update() 
     {
-        
-    }
-    void OnTriggerEnter(Collider other) 
-    {
-        if (other.gameObject.layer == 10)
+        if (!GetComponentInParent<PlayerInput>().GetGrab() && grabEvent)
         {
-            other.transform.Rotate((Vector3.up + Vector3.left) * 90);
-            Debug.Log(other.gameObject.name);
+            grabEvent = false;
+        }
+        if (GetComponentInParent<PlayerInput>().GetGrab())
+        {
+            grabEvent = true;
+        }    
+    }
+    void OnTriggerStay(Collider other) 
+    {
+        if (other.gameObject.layer == 10 && grabEvent)
+        {   
+            // #DUVIDA: O Item vira filho do gameobject como o planejado mas não ele se movimenta junto
+            other.gameObject.transform.SetParent(this.gameObject.GetComponentInParent<Transform>());
+            // Debug.Log(this.gameObject.GetComponentInParent<Transform>().name);
         }
     }
 }
