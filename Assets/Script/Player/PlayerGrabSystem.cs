@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerItemGrabber : MonoBehaviour
+public class PlayerGrabSystem : MonoBehaviour
 {   
     PlayerInput _pi;
 
@@ -17,13 +17,17 @@ public class PlayerItemGrabber : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
-
         
     }
-    void OnCollisionEnter(Collision other) {
-        Debug.Log(other.gameObject.name);
+    void OnTriggerEnter(Collider other) 
+    {
+        if (other.gameObject.layer == 10)
+        {
+            other.transform.Rotate((Vector3.up + Vector3.left) * 90);
+            Debug.Log(other.gameObject.name);
+        }
     }
 }
 
