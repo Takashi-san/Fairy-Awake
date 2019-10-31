@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	[SerializeField] float _velocity = 0;
 	[SerializeField] float _jumpVelocity = 0;
+	bool _canJump = true;
 
 	void Start() {
 		_pi = gameObject.GetComponent<PlayerInput>();
@@ -22,8 +23,9 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (_pi.GetJump()) {
+		if (_pi.GetJump() && _canJump) {
 			_rb.velocity = Vector3.up * _jumpVelocity;
+			_canJump = false;
 		}
 		else {
 			_rb.velocity = Vector3.up * _rb.velocity.y;
@@ -37,6 +39,13 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		else {
 			_rb.velocity += Vector3.zero;
+		}
+	}
+
+	void OnCollisionEnter(Collision collision) {
+		// Colisão com camada "chao".
+		if (collision.gameObject.layer == 9) {
+			_canJump = true;
 		}
 	}
 }
