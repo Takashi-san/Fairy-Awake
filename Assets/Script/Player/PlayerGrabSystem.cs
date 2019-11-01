@@ -2,35 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGrabSystem : MonoBehaviour
-{   
-    bool grabEvent;
+public class PlayerGrabSystem : MonoBehaviour {
+	PlayerInput _playerInput;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+	bool _grabEvent;
 
-    // Update is called once per frame
-    void Update() 
-    {
-        if (!GetComponentInParent<PlayerInput>().GetGrab() && grabEvent)
-        {
-            grabEvent = false;
-        }
-        if (GetComponentInParent<PlayerInput>().GetGrab())
-        {
-            grabEvent = true;
-        }    
-    }
-    void OnTriggerStay(Collider other) 
-    {
-        if (other.gameObject.layer == 10 && grabEvent)
-        {   
-            // #DUVIDA: O Item vira filho do gameobject como o planejado mas não ele se movimenta junto
-            other.gameObject.transform.SetParent(this.gameObject.GetComponentInParent<Transform>());
-            // Debug.Log(this.gameObject.GetComponentInParent<Transform>().name);
-        }
-    }
+	void Start() {
+		_playerInput = gameObject.GetComponentInParent<PlayerInput>();
+		if (!_playerInput) {
+			Debug.LogError("Missing PlayerInput in parent object");
+		}
+	}
+
+	void Update() {
+		if (_playerInput.GetGrab()) {
+			_grabEvent = true;
+		}
+		else if (_grabEvent) {
+			_grabEvent = false;
+		}
+	}
+
+	void OnTriggerStay(Collider other) {
+		if (other.gameObject.layer == 10 && _grabEvent) {
+			other.transform.SetParent(transform);
+			other.GetComponent<Rigidbody>().isKinematic = true;
+		}
+	}
 }
-
