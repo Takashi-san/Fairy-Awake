@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour {
 	float _horizontal, _vertical;
 	bool _horizontalDown, _verticalDown;
 	bool _use, _tmp, _jump;
+	bool _interact;
 
 	// Em Edit >> Project Settings... >> Script Execution Order, foi colocado para ser executado antes de todos.
 	void Update() {
@@ -18,6 +19,8 @@ public class PlayerInput : MonoBehaviour {
 		_use = Input.GetButtonDown("Jump");
 		_jump = Input.GetButtonDown("Jump");
 		_tmp = Input.GetButtonDown("Fire1");
+
+		_interact = Input.GetKeyDown(KeyCode.D);
 	}
 
 	public float GetHorizontal() {
@@ -38,5 +41,9 @@ public class PlayerInput : MonoBehaviour {
 
 	public bool GetTmp() {
 		return _tmp;
+	}
+
+	public bool GetInteract(){
+		return _interact;
 	}
 }
