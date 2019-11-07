@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stone : MonoBehaviour
+public class StoneMove : MonoBehaviour
 {
     public enum State{
         move,
@@ -12,14 +12,22 @@ public class Stone : MonoBehaviour
 
     public State state;
 
-    
+    public     
     PlayerInput _pi;
     Rigidbody _rb;
+    public GameObject Player;
+
+    public float radius = 1.7f;
+
+    void OnDrawGizmosSelected () {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        state = Stone.State.stop;
+        state = StoneMove.State.stop;
 
         _pi = gameObject.GetComponent<PlayerInput>();
         _rb = gameObject.GetComponent<Rigidbody>();
@@ -35,11 +43,12 @@ public class Stone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_pi.GetInteract()){
-            state = Stone.State.move;
+        if (_pi.GetInteract() && Vector3.Distance(Player.transform.position, transform.position) <= radius){
+            state = StoneMove.State.move;
+            Debug.Log("Close enough");
         }
         else{
-            state = Stone.State.stop;
+            state = StoneMove.State.stop;
         }
     }
 

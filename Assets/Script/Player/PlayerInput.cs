@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour {
 		_jump = Input.GetButtonDown("Jump");
 		_tmp = Input.GetButtonDown("Fire1");
 
-		_interact = Input.GetKeyDown(KeyCode.D);
+		_interact = Input.GetKeyDown(KeyCode.E);
 	}
 
 	public float GetHorizontal() {
