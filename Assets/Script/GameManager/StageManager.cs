@@ -5,19 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour {
 	[SerializeField] string _firstScene;
-	InputManager _inputManager;
 
 	void Start() {
-		_inputManager = FindObjectOfType<InputManager>().GetComponent<InputManager>();
-
 		//Load first scene.
 		StartCoroutine(LoadScene(_firstScene));
-	}
-
-	void Update() {
-		if (_inputManager.GetAction()) {
-			ChangeScene("Walk");
-		}
 	}
 
 	IEnumerator LoadScene(string sceneName) {
