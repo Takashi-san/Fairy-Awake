@@ -36,6 +36,20 @@ public class StageManager : MonoBehaviour {
 		yield break;
 	}
 
+	IEnumerator UnloadScene(string sceneName) {
+		Scene unloadScene = SceneManager.GetSceneByName(sceneName);
+		AsyncOperation unloading = SceneManager.UnloadSceneAsync(unloadScene);
+		yield return unloading;
+		yield break;
+	}
+
+	IEnumerator UnloadScene(int sceneBuildIndex) {
+		Scene unloadScene = SceneManager.GetSceneByBuildIndex(sceneBuildIndex);
+		AsyncOperation unloading = SceneManager.UnloadSceneAsync(unloadScene);
+		yield return unloading;
+		yield break;
+	}
+
 	IEnumerator UnloadActiveScene() {
 		Scene activeScene = SceneManager.GetActiveScene();
 		AsyncOperation unloading = SceneManager.UnloadSceneAsync(activeScene);
