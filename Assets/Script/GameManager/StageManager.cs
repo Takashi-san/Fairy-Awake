@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour {
-	[SerializeField] string _firstScene;
+	[SerializeField] string _firstScene = "";
 
 	void Start() {
 		//Load first scene.
