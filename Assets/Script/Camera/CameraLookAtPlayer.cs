@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraLookAtPlayer : MonoBehaviour {
 	Transform _player;
-	[SerializeField] float _maxSqrOffset = 0;
 
 	void Start() {
 		_player = FindObjectOfType<PlayerInput>().transform;

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Walk.unity
     guid: 73e7fe00877ec674cbfc71b85756cb6d
+  - enabled: 1
+    path: Assets/Scenes/fbxFile.unity
+    guid: cb777baf62669db4694ac0de315f78e4
   m_configObjects: {}
