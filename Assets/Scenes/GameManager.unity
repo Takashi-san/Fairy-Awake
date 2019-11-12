@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d15ae17202f6e842b92fb66cdf2c3ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstScene: fbxFile
+  _firstScene: Room1
 --- !u!114 &587223048
 MonoBehaviour:
   m_ObjectHideFlags: 0
