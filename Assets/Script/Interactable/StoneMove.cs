@@ -13,8 +13,7 @@ public class StoneMove : MonoBehaviour
 
     public State state;
 
-    public     
-    PlayerInput _pi;
+    public InteractItem _inter;
     Rigidbody _rb;
     public GameObject Player;
 
@@ -38,14 +37,14 @@ public class StoneMove : MonoBehaviour
     {
         state = StoneMove.State.stop;
 
-        _pi = gameObject.GetComponent<PlayerInput>();
         _rb = gameObject.GetComponent<Rigidbody>();
+        _inter = gameObject.GetComponent<InteractItem>();
 
-		if (!_pi) {
-			Debug.LogError("No PlayerInput in the object!");
-		}
         if (!_rb) {
 			Debug.LogError("No RigidBody in the object!");
+		}
+		if (!_inter) {
+			Debug.LogError("No IteracrItem in the object!");
 		}
     }
 
@@ -55,7 +54,7 @@ public class StoneMove : MonoBehaviour
         switch (state)
         {
             case StoneMove.State.stop:
-                if (_pi.GetInteract() && Vector3.Distance(Player.transform.position, transform.position) <= radius){
+                if (_inter.GetInteract()){
                     state = StoneMove.State.move;
                     Debug.Log("Close enough");
                     Debug.Log("State = move");
@@ -78,10 +77,10 @@ public class StoneMove : MonoBehaviour
             case StoneMove.State.move:
                 _rb.useGravity = false;
                 if( Mathf.Abs(_dist_z) <  Mathf.Abs(_dist_x)){
-                    _rb.velocity = new Vector3(_velToMove * _dist_x / Mathf.Abs(_dist_x), 0, 0);
+                    this._rb.velocity = new Vector3(_velToMove * _dist_x / Mathf.Abs(_dist_x), 0, 0);
                 }
                 else {
-                    _rb.velocity = new Vector3(0, 0, _velToMove * _dist_z / Mathf.Abs(_dist_z));
+                    this._rb.velocity = new Vector3(0, 0, _velToMove * _dist_z / Mathf.Abs(_dist_z));
                 }
                 state = StoneMove.State.inbetween;
                 break;
