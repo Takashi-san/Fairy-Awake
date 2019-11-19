@@ -13,9 +13,9 @@ public class StoneMove : MonoBehaviour
 
     public State state;
 
-    public InteractItem _inter;
+    [SerializeField] PlayerInteraction _inter;
     Rigidbody _rb;
-    public GameObject Player;
+    [SerializeField] GameObject Player;
 
     public static class Const {
         public const float TimeToReset = 2f;
@@ -38,7 +38,7 @@ public class StoneMove : MonoBehaviour
         state = StoneMove.State.stop;
 
         _rb = gameObject.GetComponent<Rigidbody>();
-        _inter = gameObject.GetComponent<InteractItem>();
+        _inter = gameObject.GetComponent<PlayerInteraction>();
 
         if (!_rb) {
 			Debug.LogError("No RigidBody in the object!");
@@ -54,7 +54,7 @@ public class StoneMove : MonoBehaviour
         switch (state)
         {
             case StoneMove.State.stop:
-                if (_inter.GetInteract()){
+                if (_inter.GetInteractArea() && gameObject.name == _inter.ObjectToInteracte()){
                     state = StoneMove.State.move;
                     Debug.Log("Close enough");
                     Debug.Log("State = move");
