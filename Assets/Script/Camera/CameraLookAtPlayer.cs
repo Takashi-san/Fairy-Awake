@@ -6,7 +6,7 @@ public class CameraLookAtPlayer : MonoBehaviour {
 	Transform _player;
 
 	void Start() {
-		_player = FindObjectOfType<PlayerInput>().transform;
+		_player = FindObjectOfType<PlayerMovement>().transform;
 		if (!_player) {
 			Debug.LogError("Player not found to follow!");
 		}
