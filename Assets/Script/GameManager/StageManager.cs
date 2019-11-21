@@ -7,8 +7,10 @@ public class StageManager : MonoBehaviour {
 	[SerializeField] string _firstScene = "";
 
 	void Start() {
-		//Load first scene.
-		StartCoroutine(LoadScene(_firstScene));
+		//Load first scene if specified.
+		if (_firstScene != "") {
+			StartCoroutine(LoadScene(_firstScene));
+		}
 	}
 
 	IEnumerator LoadScene(string sceneName) {

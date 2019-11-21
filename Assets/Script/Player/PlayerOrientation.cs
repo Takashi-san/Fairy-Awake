@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerOrientation : MonoBehaviour {
-	PlayerInput _pi;
+	InputManager _inputManager;
 	Rigidbody _rb;
 
 	Vector3 _newOrientation, _oldOrientation, _orientation;
@@ -11,11 +11,11 @@ public class PlayerOrientation : MonoBehaviour {
 	float _deltaTime = 0;
 
 	void Start() {
-		_pi = gameObject.GetComponent<PlayerInput>();
+		_inputManager = FindObjectOfType<InputManager>().GetComponent<InputManager>();
 		_rb = gameObject.GetComponent<Rigidbody>();
 
-		if (!_pi) {
-			Debug.LogError("No PlayerInput in the object!");
+		if (!_inputManager) {
+			Debug.LogError("No InputManager found in the scene!");
 		}
 		if (!_rb) {
 			Debug.LogError("No RigidBody in the object!");
@@ -23,8 +23,8 @@ public class PlayerOrientation : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (_pi.GetHorizontal() != 0) {
-			if (_pi.GetHorizontal() > 0) {
+		if (_inputManager.GetHorizontal() != 0) {
+			if (_inputManager.GetHorizontal() > 0) {
 				if (_newOrientation.y != 90) {
 					_newOrientation = Vector3.up * 90;
 					_oldOrientation = transform.rotation.eulerAngles;
@@ -46,8 +46,8 @@ public class PlayerOrientation : MonoBehaviour {
 				}
 			}
 		}
-		else if (_pi.GetVertical() != 0) {
-			if (_pi.GetVertical() > 0) {
+		else if (_inputManager.GetVertical() != 0) {
+			if (_inputManager.GetVertical() > 0) {
 				if ((_newOrientation.y != 360) && (_newOrientation.y != 0)) {
 					if (transform.rotation.eulerAngles.y > 180) {
 						_newOrientation = Vector3.up * 360;
