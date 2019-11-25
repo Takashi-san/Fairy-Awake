@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-	PlayerInput _pi;
+	InputManager _inputManager;
 	Rigidbody _rb;
 
 	[SerializeField] float _velocity = 0;
@@ -11,11 +11,11 @@ public class PlayerMovement : MonoBehaviour {
 	bool _canJump = true;
 
 	void Start() {
-		_pi = gameObject.GetComponent<PlayerInput>();
+		_inputManager = FindObjectOfType<InputManager>().GetComponent<InputManager>();
 		_rb = gameObject.GetComponent<Rigidbody>();
 
-		if (!_pi) {
-			Debug.LogError("No PlayerInput in the object!");
+		if (!_inputManager) {
+			Debug.LogError("No InputManager found in the scene!");
 		}
 		if (!_rb) {
 			Debug.LogError("No RigidBody in the object!");
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (_pi.GetJump() && _canJump) {
+		if (_inputManager.GetJump() && _canJump) {
 			_rb.velocity = Vector3.up * _jumpVelocity;
 			_canJump = false;
 		}
@@ -31,11 +31,11 @@ public class PlayerMovement : MonoBehaviour {
 			_rb.velocity = Vector3.up * _rb.velocity.y;
 		}
 
-		if (_pi.GetHorizontal() != 0) {
-			_rb.velocity += Vector3.right * _pi.GetHorizontal() * _velocity;
+		if (_inputManager.GetHorizontal() != 0) {
+			_rb.velocity += Vector3.right * _inputManager.GetHorizontal() * _velocity;
 		}
-		else if (_pi.GetVertical() != 0) {
-			_rb.velocity += Vector3.forward * _pi.GetVertical() * _velocity;
+		else if (_inputManager.GetVertical() != 0) {
+			_rb.velocity += Vector3.forward * _inputManager.GetVertical() * _velocity;
 		}
 		else {
 			_rb.velocity += Vector3.zero;

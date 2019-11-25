@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,8 +7,10 @@ public class StageManager : MonoBehaviour {
 	[SerializeField] string _firstScene = "";
 
 	void Start() {
-		//Load first scene.
-		StartCoroutine(LoadScene(_firstScene));
+		//Load first scene if specified.
+		if (_firstScene != "") {
+			StartCoroutine(LoadScene(_firstScene));
+		}
 	}
 
 	IEnumerator LoadScene(string sceneName) {
@@ -56,5 +58,9 @@ public class StageManager : MonoBehaviour {
 	public void ChangeScene(int sceneBuildIndex) {
 		StartCoroutine(UnloadActiveScene());
 		StartCoroutine(LoadScene(sceneBuildIndex));
+	}
+
+	public void CloseGame() {
+		Application.Quit();
 	}
 }
