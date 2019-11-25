@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour {
-	float _horizontal, _vertical;
+	float _horizontal, _vertical, _cameraC;
 	bool _action, _jump;
 
 	// Em Edit >> Project Settings... >> Script Execution Order, foi colocado para ser executado antes de todos.
@@ -13,6 +13,8 @@ public class InputManager : MonoBehaviour {
 		_horizontal = Input.GetAxis("Horizontal");
 		// S (-1) <-> W (1).
 		_vertical = Input.GetAxis("Vertical");
+		// left (-1) <-> right (1).
+		_cameraC = Input.GetAxis("CameraC");
 
 		_action = Input.GetButtonDown("Action");
 		_jump = Input.GetButtonDown("Jump");
@@ -24,6 +26,10 @@ public class InputManager : MonoBehaviour {
 
 	public float GetVertical() {
 		return _vertical;
+	}
+
+	public float GetCameraC() {
+		return _cameraC;
 	}
 
 	public bool GetAction() {
