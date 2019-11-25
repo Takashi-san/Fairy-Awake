@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 8341380704405895886, guid: 42d0f5548f77f474093ac1a6694f88db,
         type: 3}
       propertyPath: _firstScene
-      value: GameOverScreen
+      value: TitleScreen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42d0f5548f77f474093ac1a6694f88db, type: 3}
