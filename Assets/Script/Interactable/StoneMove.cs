@@ -13,7 +13,7 @@ public class StoneMove : MonoBehaviour
 
     public State state;
 
-    [SerializeField] PlayerInteraction _inter;
+    PlayerInteraction _inter;
     Rigidbody _rb;
     [SerializeField] GameObject Player;
 
@@ -54,7 +54,7 @@ public class StoneMove : MonoBehaviour
         switch (state)
         {
             case StoneMove.State.stop:
-                if (_inter.GetInteractArea() && gameObject.name == _inter.ObjectToInteracte()){
+                if (_inter.GetInteractArea() /*&& gameObject.name == _inter.ObjectToInteracte()*/){
                     state = StoneMove.State.move;
                     Debug.Log("Close enough");
                     Debug.Log("State = move");
@@ -62,6 +62,7 @@ public class StoneMove : MonoBehaviour
                     _dist_z= transform.position.z - Player.transform.position.z;
                     Debug.Log("X: " + _dist_x + ", Z: " + _dist_z);
                 }
+                _rb.velocity = Vector3.zero;
                 _rb.useGravity = true;
                 break;
             case StoneMove.State.inbetween:
