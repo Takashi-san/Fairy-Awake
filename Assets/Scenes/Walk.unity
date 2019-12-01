@@ -632,6 +632,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6424770305308493658, guid: fcb9ae76f10c1cc49ad27d4e09550bfb,
+        type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 4224062762226366252, guid: 00bcaaab1fbce314197a89d059eca82a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcb9ae76f10c1cc49ad27d4e09550bfb, type: 3}
 --- !u!1 &367476558
@@ -2400,7 +2406,7 @@ PrefabInstance:
     - target: {fileID: 8341380704405895884, guid: 42d0f5548f77f474093ac1a6694f88db,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8341380704405895887, guid: 42d0f5548f77f474093ac1a6694f88db,
         type: 3}
