@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour {
 		}
 		else {
 			if (collider.gameObject.tag == "Enemy") {
-				//collision.gameObject.GetComponent<PlayerHealth>().Heal(_heal);
+				collider.gameObject.GetComponent<EnemyHealth>().Damage(_dmg);
 				Destroy(gameObject);
 			}
 		}

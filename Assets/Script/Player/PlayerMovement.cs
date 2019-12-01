@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		// Colisão com espinhos.
-		if (collision.gameObject.layer == 12) {
+		if (collision.gameObject.tag == "Enemy") {
 
 			Vector3 dir = collision.transform.position - transform.position;
 			dir = -dir.normalized;
