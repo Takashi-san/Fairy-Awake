@@ -59,6 +59,9 @@ public class PlayerMovement : MonoBehaviour {
 
 			Vector3 dir = collision.transform.position - transform.position;
 			dir = -dir.normalized;
+			if (dir.y < 0.3) {
+				dir.y = 0.3f;
+			}
 			if (dir.x == 0 && dir.z == 0) {
 				dir.x = 0.5f;
 			}
