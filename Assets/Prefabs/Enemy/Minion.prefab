@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2141878015148594734}
   - component: {fileID: 6981278763156352024}
   - component: {fileID: 3737694536636453089}
-  - component: {fileID: 6102446943083852340}
   - component: {fileID: 306616142485918443}
   - component: {fileID: 909598093533931699}
   - component: {fileID: 2352059400182331100}
   - component: {fileID: 4849511555858015570}
   - component: {fileID: -5185902850865493795}
+  - component: {fileID: 6095438423830629461}
   m_Layer: 0
   m_Name: Minion
   m_TagString: Enemy
@@ -92,20 +92,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &6102446943083852340
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162128835310281789}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 2.5
-  m_Height: 4.4
-  m_Direction: 1
-  m_Center: {x: 0, y: 2, z: -0.15}
 --- !u!114 &306616142485918443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd5777f837a8ab4784da1abe1b876fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: 2
+  _velocity: 10
 --- !u!114 &909598093533931699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,3 +160,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &6095438423830629461
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3162128835310281789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.8
+  m_Height: 4.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.1, z: 0}

@@ -5,9 +5,9 @@ using UnityEngine;
 public class ItemLife : MonoBehaviour {
 	[SerializeField] int _heal = 0;
 
-	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.tag == "Player") {
-			collision.gameObject.GetComponent<PlayerHealth>().Heal(_heal);
+	void OnTriggerEnter(Collider collider) {
+		if (collider.gameObject.tag == "Player") {
+			collider.gameObject.GetComponent<PlayerHealth>().Heal(_heal);
 			Destroy(gameObject);
 		}
 	}
