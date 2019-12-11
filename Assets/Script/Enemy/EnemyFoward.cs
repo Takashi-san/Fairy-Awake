@@ -11,6 +11,7 @@ public class EnemyFoward : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		_rb.velocity = Vector3.zero;
 		_rb.AddRelativeForce(Vector3.forward * _velocity, ForceMode.VelocityChange);
 	}
 }
