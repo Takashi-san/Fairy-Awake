@@ -82,7 +82,7 @@ public class StoneMove : MonoBehaviour {
 		}
 	}
 
-	public void MoveStone() {
-
+	public void MoveStone(Vector3 direction) {
+		//_rb.velocity = new Vector3(_velocity * direction);
 	}
 }
