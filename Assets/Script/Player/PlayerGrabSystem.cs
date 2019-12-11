@@ -9,6 +9,8 @@ public class PlayerGrabSystem : MonoBehaviour {
 	bool _isGrabbing;
 	int _grabHeight;
 	Collider _grabbingObject;
+	Hashtable _objTable = new Hashtable();
+	GameObject _objToBeGrabbed;
 
 
 	void Start() {
@@ -18,6 +20,7 @@ public class PlayerGrabSystem : MonoBehaviour {
 	}
 
 	void Update() {
+		_objToBeGrabbed = (GameObject)_objTable["Item"];
 		if (_playerInput.GetGrab()) {
 			_grabEvent = true;
 			if (_isGrabbing) {
@@ -26,6 +29,15 @@ public class PlayerGrabSystem : MonoBehaviour {
 				_isGrabbing = false;
 				_grabbingObject = null;
 			}
+			else if (_objToBeGrabbed != null) {
+				if (_objToBeGrabbed.layer == 10) {
+					_objToBeGrabbed.transform.SetParent(transform);
+					_objToBeGrabbed.transform.Translate(Vector3.up * (_grabHeight));
+					_objToBeGrabbed.GetComponent<Rigidbody>().isKinematic = true;
+					_isGrabbing = true;
+					_grabbingObject = _objToBeGrabbed.GetComponent<Collider>();
+				}
+			}
 		}
 		else if (_grabEvent) {
 			_grabEvent = false;
@@ -33,13 +45,13 @@ public class PlayerGrabSystem : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (other.gameObject.layer == 10 && _grabEvent && !_isGrabbing) {
-			other.transform.SetParent(transform);
-			other.transform.Translate(Vector3.up * (_grabHeight));
-			other.GetComponent<Rigidbody>().isKinematic = true;
-			_isGrabbing = true;
-			_grabbingObject = other;
+		if (!_objTable.ContainsKey(other.gameObject.name) && other.gameObject.layer == 10) {
+			_objTable.Add(other.gameObject.name, other.gameObject);
+		}	
+	}
+	void OnTriggerExit(Collider other) {
+		if (_objTable.ContainsKey(other.gameObject.name)) {
+			_objTable.Remove(other.gameObject.name);
 		}
 	}
-	//TODO: grabbing duas vezes (o segundo comando de soltar ainda deixa o evento ativado para pegar o objeto novamente)
 }
