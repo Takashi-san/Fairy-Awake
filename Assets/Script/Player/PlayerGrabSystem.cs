@@ -55,4 +55,8 @@ public class PlayerGrabSystem : MonoBehaviour {
 			_objTable.Remove(other.gameObject.name);
 		}
 	}
+
+	public bool IsGrabbing() {
+		return _isGrabbing;
+	}
 }
