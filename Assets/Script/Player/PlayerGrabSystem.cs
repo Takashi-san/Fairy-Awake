@@ -7,7 +7,8 @@ public class PlayerGrabSystem : MonoBehaviour {
 
 	bool _grabEvent;
 	bool _isGrabbing;
-	int _grabHeight;
+	[SerializeField] int _vertDistance;
+	[SerializeField] int _horizDistance;
 	Collider _grabbingObject;
 	Hashtable _objTable = new Hashtable();
 	GameObject _objToBeGrabbed;
@@ -15,7 +16,7 @@ public class PlayerGrabSystem : MonoBehaviour {
 
 	void Start() {
 		_playerInput = FindObjectOfType<InputManager>().GetComponent<InputManager>();
-		_grabHeight = 1;
+		_vertDistance = 3;
 		_isGrabbing = false;
 	}
 
@@ -32,7 +33,7 @@ public class PlayerGrabSystem : MonoBehaviour {
 			else if (_objToBeGrabbed != null) {
 				if (_objToBeGrabbed.layer == 10) {
 					_objToBeGrabbed.transform.SetParent(transform);
-					_objToBeGrabbed.transform.Translate(Vector3.up * (_grabHeight));
+					_objToBeGrabbed.transform.Translate((Vector3.up * (_vertDistance)) + (Vector3.forward * (_horizDistance)));
 					_objToBeGrabbed.GetComponent<Rigidbody>().isKinematic = true;
 					_isGrabbing = true;
 					_grabbingObject = _objToBeGrabbed.GetComponent<Collider>();
