@@ -43,15 +43,11 @@ public class InputManager : MonoBehaviour {
 		return _jump;
 	}
 
-	public bool GetGrab()
-	{
+	public bool GetGrab() {
 		return _grab;
 	}
 
 	public bool GetInteract() {
-		if (_interact) {
-			Debug.Log("Interact");
-		}
 		return _interact;
 	}
 
