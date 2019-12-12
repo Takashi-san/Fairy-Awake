@@ -11,16 +11,16 @@ public class StoneMovement : MonoBehaviour {
 	}
 
 	public void MoveStone(Vector3 velocity, float moveTime) {
-		_rb.velocity = velocity;
-		_rb.useGravity = false;
+		_rb.constraints = RigidbodyConstraints.FreezeRotation;
 		_moveTime = moveTime;
+		_rb.velocity = velocity;
 		StartCoroutine(StopStone());
 	}
 
 	IEnumerator StopStone() {
 		yield return new WaitForSeconds(_moveTime);
 		_rb.velocity = Vector3.zero;
-		_rb.useGravity = true;
+		_rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
 		yield break;
 	}
 }

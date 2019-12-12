@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1751818279747412488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6716276339613199063}
   m_Father: {fileID: 1751818281237716359}
@@ -75,7 +75,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1751818281237716409
 MonoBehaviour:
@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83268477dafb1a345915ee27e26355ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rockSpeed: 2
-  _rockMoveTime: 0.5
+  _rockSpeed: 0
+  _rockMoveTime: 0
 --- !u!1001 &1751818279650378189
 PrefabInstance:
   m_ObjectHideFlags: 0
