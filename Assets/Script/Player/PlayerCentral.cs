@@ -7,12 +7,35 @@ using UnityEngine;
 public class PlayerCentral : MonoBehaviour {
 	PlayerHealth _playerHealth;
 	PlayerMovement _playerMovement;
+	InputManager _inputManager;
 
 	[SerializeField] bool _hitStun = false;
+	[SerializeField] GameObject _jItem;
+	[SerializeField] GameObject _kItem;
+	[SerializeField] GameObject _lItem;
 
 	void Start() {
 		_playerHealth = gameObject.GetComponent<PlayerHealth>();
 		_playerMovement = gameObject.GetComponent<PlayerMovement>();
+		_inputManager = FindObjectOfType<InputManager>().GetComponent<InputManager>();
+	}
+
+	void Update() {
+		if (_inputManager.GetJ()) {
+			_jItem.SetActive(true);
+			_kItem.SetActive(false);
+			_lItem.SetActive(false);
+		}
+		if (_inputManager.GetK()) {
+			_kItem.SetActive(true);
+			_jItem.SetActive(false);
+			_lItem.SetActive(false);
+		}
+		if (_inputManager.GetL()) {
+			_lItem.SetActive(true);
+			_kItem.SetActive(false);
+			_jItem.SetActive(false);
+		}
 	}
 
 	public PlayerHealth GetHealth() {
