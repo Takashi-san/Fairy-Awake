@@ -11,12 +11,14 @@ public class Door : MonoBehaviour {
 		_stageManager = FindObjectOfType<StageManager>().GetComponent<StageManager>();
 	}
 
-	void OnCollisionEnter() {
-		if (_stageIndex != -1) {
-			_stageManager.ChangeScene(_stageIndex);
-		}
-		else {
-			_stageManager.ChangeScene(_stageName);
+	void OnTriggerEnter(Collider collider) {
+		if (collider.gameObject.tag == "Player") {
+			if (_stageIndex != -1) {
+				_stageManager.ChangeScene(_stageIndex);
+			}
+			else {
+				_stageManager.ChangeScene(_stageName);
+			}
 		}
 	}
 }

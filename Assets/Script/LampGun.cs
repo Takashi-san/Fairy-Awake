@@ -21,7 +21,7 @@ public class LampGun : MonoBehaviour {
 	void Update() {
 		_fireTimer += Time.deltaTime;
 		if (_fireTimer >= _fireRate) {
-			if (_inputManager.GetShoot()) {
+			if (_inputManager.GetInteract()) {
 				if (_triple) {
 					TripleShoot();
 				}
