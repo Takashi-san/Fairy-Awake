@@ -6708,6 +6708,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 841771830544844587, guid: b607630d994a15e4a92b620d40e1b4ab,
+        type: 3}
+      propertyPath: m_Color.rgba
+      value: 4291019715
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443090740028869045, guid: b607630d994a15e4a92b620d40e1b4ab,
+        type: 3}
+      propertyPath: _stageName
+      value: Fase2
+      objectReference: {fileID: 0}
     - target: {fileID: 3820599694235659467, guid: b607630d994a15e4a92b620d40e1b4ab,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -6717,11 +6727,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 841771830544844587, guid: b607630d994a15e4a92b620d40e1b4ab,
-        type: 3}
-      propertyPath: m_Color.rgba
-      value: 4291019715
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b607630d994a15e4a92b620d40e1b4ab, type: 3}
@@ -18605,7 +18610,7 @@ PrefabInstance:
     - target: {fileID: 8341380704405895884, guid: 42d0f5548f77f474093ac1a6694f88db,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8341380704405895887, guid: 42d0f5548f77f474093ac1a6694f88db,
         type: 3}

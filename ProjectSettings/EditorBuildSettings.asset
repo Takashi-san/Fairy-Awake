@@ -20,4 +20,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Walk.unity
     guid: d44231c9a6a688045ab9e2d08d9c042c
+  - enabled: 1
+    path: Assets/Scenes/Fases/Fase0.unity
+    guid: 3c783bdbff1811644957f5aefa81998c
+  - enabled: 1
+    path: Assets/Scenes/Fases/Fase1.unity
+    guid: af79ebc205f759b438b08ac404232874
+  - enabled: 1
+    path: Assets/Scenes/Fases/Fase2.unity
+    guid: 1971152f72857314ca888a6edce3e82c
+  - enabled: 1
+    path: Assets/Scenes/Fases/Fase3.unity
+    guid: dee32bb18cd794944932d0aadd64b6b4
+  - enabled: 1
+    path: Assets/Scenes/Fases/Fase4.unity
+    guid: 7fb084f7e1b57294c98661bb97884c74
   m_configObjects: {}
