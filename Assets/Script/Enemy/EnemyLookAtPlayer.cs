@@ -18,8 +18,4 @@ public class EnemyLookAtPlayer : MonoBehaviour {
 	void Update() {
 		transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));
 	}
-
-	void FixedUpdate() {
-		_rb.velocity = transform.rotation.eulerAngles.normalized * _velocity;
-	}
 }

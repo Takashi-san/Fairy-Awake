@@ -62,12 +62,14 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	IEnumerator WaitALittle() {
+		/*
 		Debug.Log("GameOver in 3...");
 		yield return new WaitForSeconds(1);
 		Debug.Log("GameOver in 2...");
 		yield return new WaitForSeconds(1);
 		Debug.Log("GameOver in 1...");
 		yield return new WaitForSeconds(1);
+		*/
 		Debug.Log("GameOver!");
 		_stageManager.ChangeScene("GameOverScreen");
 		yield break;

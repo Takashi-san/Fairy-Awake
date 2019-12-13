@@ -6,6 +6,11 @@ public class InputManager : MonoBehaviour {
 	float _horizontal, _vertical, _cameraC;
 	bool _action, _jump, _shoot, _grab;
 	bool _interact, _jItem, _kItem, _lItem;
+	StageManager _stageManager;
+
+	void Start() {
+		_stageManager = FindObjectOfType<StageManager>().GetComponent<StageManager>();
+	}
 
 	// Em Edit >> Project Settings... >> Script Execution Order, foi colocado para ser executado antes de todos.
 	void Update() {
@@ -26,6 +31,10 @@ public class InputManager : MonoBehaviour {
 		_jItem = Input.GetKeyDown(KeyCode.J);
 		_kItem = Input.GetKeyDown(KeyCode.K);
 		_lItem = Input.GetKeyDown(KeyCode.L);
+
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			_stageManager.ChangeScene("TitleScreen");
+		}
 	}
 
 	public float GetHorizontal() {
