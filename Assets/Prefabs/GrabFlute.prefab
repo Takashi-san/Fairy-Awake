@@ -40,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665702291587234532}
-  - component: {fileID: 6651767366797231903}
   - component: {fileID: 3751084946385952349}
   - component: {fileID: 5929059541275703275}
+  - component: {fileID: 3880614995622784614}
   m_Layer: 8
   m_Name: GrabFlute
   m_TagString: Untagged
@@ -65,14 +65,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6651767366797231903
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7499971489160587628}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!135 &3751084946385952349
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -100,6 +92,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _vertDistance: 3
   _horizDistance: 0
+--- !u!114 &3880614995622784614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499971489160587628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ab0501826ae445b80f17c091366929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _grabSystem: {fileID: 5929059541275703275}
+  _pig: {fileID: 0}
 --- !u!1001 &4982258786134566277
 PrefabInstance:
   m_ObjectHideFlags: 0
