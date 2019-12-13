@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] float _velocity = 0;
 	[SerializeField] float _jumpVelocity = 0;
 	[SerializeField] float _forceHit = 0;
-	bool _canJump = true;
+	bool _canJump = true, _iJump = false;
 
 	void Start() {
 		_inputManager = FindObjectOfType<InputManager>().GetComponent<InputManager>();
@@ -25,15 +25,22 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
+	void Update() {
+		if (_inputManager.GetJump()) {
+			_iJump = true;
+		}
+	}
+
 	void FixedUpdate() {
 		if (!_playerCentral.GetHitStun()) {
-			if (_inputManager.GetJump() && _canJump) {
+			if (_iJump && _canJump) {
 				_rb.velocity = Vector3.up * _jumpVelocity;
 				_canJump = false;
 			}
 			else {
 				_rb.velocity = Vector3.up * _rb.velocity.y;
 			}
+			_iJump = false;
 
 			if (_inputManager.GetHorizontal() != 0) {
 				_rb.velocity += Vector3.right * _inputManager.GetHorizontal() * _velocity;
