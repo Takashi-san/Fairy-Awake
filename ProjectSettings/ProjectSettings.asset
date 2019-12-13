@@ -533,11 +533,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: Fairy-Awake
   metroPackageVersion: 
-  metroCertificatePath: 
+  metroCertificatePath: C:\Users\koro_\Documents\Fairy-Awake\Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 80b164eedbd0d601
   metroApplicationDescription: Fairy-Awake
   wsaImages: {}
   metroTileShortName: 

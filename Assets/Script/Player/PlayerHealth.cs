@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	void Update() {
 		if (_textUIHealth) {
-			_textUIHealth.text = "HP: " + _hp;
+			_textUIHealth.text = "" + _hp;
 		}
 	}
 
